@@ -1,7 +1,6 @@
 
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 /*
@@ -14,19 +13,19 @@ import javafx.stage.Stage;
  *
  * @author b8033335
  */
-public class E1720 extends Application{
+public class Ex1721 extends Application{
 
     @Override
     public void start(Stage stage) throws Exception {
-        BinaryEditor be = new BinaryEditor();
+        Ex20BorderPane be = new Ex20BorderPane();
         Scene scene = new Scene(be);
         stage.setScene(scene);
-        stage.setTitle("Ex17.20");
+        stage.setTitle("Ex17.21");
         stage.show();
     }
     
-    public static void main(String[] args) {
-    launch(args);
-  }
+    public static void main(String[] args){
+        launch(args);
+    }
     
 }

@@ -1,4 +1,5 @@
 
+import java.io.DataInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import javafx.geometry.Pos;
@@ -8,6 +9,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
+import static javafx.scene.layout.BorderPane.setAlignment;
 import javafx.scene.layout.HBox;
 
 /*
@@ -20,11 +22,11 @@ import javafx.scene.layout.HBox;
  *
  * @author b8033335
  */
-public class BinaryEditor extends BorderPane{
-    TextField tfFileName;
+public class Ex20BorderPane extends BorderPane{
+     TextField tfFileName;
     TextArea taFile;
     
-    public BinaryEditor(){
+    public Ex20BorderPane(){
         drawGUI();
     }
  
@@ -55,25 +57,14 @@ public class BinaryEditor extends BorderPane{
 
     private void loadFile() {
         StringBuilder sb = new StringBuilder();
-        try(FileInputStream input = new FileInputStream(tfFileName.getText())){
-            int r;
-            while ((r=input.read()) != -1){
-                sb.append(getBits(r));
+        try(DataInputStream input = new DataInputStream(new FileInputStream(tfFileName.getText()))){
+             
+            while(true){
+                taFile.setText(Integer.toHexString(input.readByte()));
             }
-            taFile.setText(sb.toString());
         }catch(Exception e){
         
         }
-    }
-
-    private static String getBits(int value) {
-        StringBuilder sb = new StringBuilder();
-        sb.append(value%2 == 0? "0":"1");
-        for(int i=1; i<8; i++){
-            value = value >> 1;
-            sb.insert(0, value%2 == 0? "0":"1");
-        }
-        return sb.toString();
     }
 
     private void saveChanges() {
@@ -84,8 +75,4 @@ public class BinaryEditor extends BorderPane{
         
         }
     }
-    
-    
-    
-    
 }

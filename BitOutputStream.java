@@ -26,6 +26,10 @@ public class BitOutputStream  {
     public BitOutputStream(File file) throws Exception{
         out = new FileOutputStream(file);
     }
+
+    BitOutputStream() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     public void writeBit(char bit) throws IOException{
         bits = bits << 1;
